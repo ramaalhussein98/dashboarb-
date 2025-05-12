@@ -51,11 +51,17 @@ const Filters = () => {
     <Box
       sx={{
         display: "flex",
-        alignItems: "center",
+        alignItems: { xs: "start", md: "center" },
         justifyContent: "space-between",
+        flexDirection: { xs: "column", md: "row" },
+        marginRight: { xs: "2rem", md: "0rem" },
       }}
     >
-      <Box display={"flex"} gap={1}>
+      <Box
+        display={"flex"}
+        gap={1}
+        sx={{ flexDirection: { xs: "column", md: "row" } }}
+      >
         <TextField
           placeholder="ابحث عن مستخدم"
           size="small"
@@ -74,6 +80,7 @@ const Filters = () => {
           width: "18%",
           display: "flex",
           justifyContent: "space-between",
+          marginTop: { xs: "1rem", md: "0rem" },
         }}
       >
         {iconData.map(({ Icon, count, color }, index) => (
@@ -94,6 +101,7 @@ const Filters = () => {
                 backgroundColor: "#eee",
                 borderRadius: "10px",
                 width: "40px",
+                marginLeft: { xs: "10px", md: "0px" },
               }}
             >
               <Icon sx={{ fontSize: "1rem", color: color }} />

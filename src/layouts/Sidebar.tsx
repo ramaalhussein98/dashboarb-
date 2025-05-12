@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   Box,
   List,
@@ -7,7 +7,11 @@ import {
   Drawer,
   ListItemButton,
   Avatar,
+  IconButton,
+  useTheme,
+  useMediaQuery,
 } from "@mui/material";
+import MenuIcon from "@mui/icons-material/Menu";
 import {
   Dashboard,
   People,
@@ -45,32 +49,19 @@ export const menuItems = [
 ];
 
 const Sidebar = () => {
-  return (
-    <Drawer
-      variant="permanent"
-      anchor="right"
-      sx={{
-        width: drawerWidth,
-        flexShrink: 0,
-        backgroundColor: "#f8f9fa",
-        "& .MuiDrawer-paper": {
-          width: drawerWidth,
-          backgroundColor: "#f8f9fa",
-          boxSizing: "border-box",
-          border: 0,
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
+  const [mobileOpen, setMobileOpen] = useState(false);
 
-          direction: "rtl",
-        },
-      }}
-    >
-      <Box display={"flex"} alignItems={"center"} gap={1} mt={2}>
-        <Avatar
-          src="/stg-plus-logo.png"
-          sx={{ width: 40, height: 40, mr: 1 }}
-        />
+  const handleDrawerToggle = () => setMobileOpen(!mobileOpen);
+
+  const drawerContent = (
+    <Box sx={{ width: drawerWidth }}>
+      <Box display={"flex"} alignItems={"center"} gap={1} mt={2} px={2}>
+        <Avatar src="/stg-plus-logo.png" sx={{ width: 40, height: 40 }} />
         <Box sx={{ fontWeight: 700, fontSize: "1.1rem" }}>Stg plus</Box>
       </Box>
-      <Box sx={{ overflow: "auto", mt: 2, width: "200px" }}>
+      <Box sx={{ overflow: "auto", mt: 2 }}>
         <List>
           {menuItems.map((item, index) => (
             <ListItemButton
@@ -107,7 +98,46 @@ const Sidebar = () => {
           ))}
         </List>
       </Box>
-    </Drawer>
+    </Box>
+  );
+
+  return (
+    <>
+      {isMobile && (
+        <IconButton
+          color="inherit"
+          edge="start"
+          onClick={handleDrawerToggle}
+          sx={{
+            position: "fixed",
+            top: 10,
+            right: 10,
+            zIndex: 1,
+          }}
+        >
+          <MenuIcon />
+        </IconButton>
+      )}
+      <Drawer
+        variant={isMobile ? "temporary" : "permanent"}
+        anchor="right"
+        open={isMobile ? mobileOpen : true}
+        onClose={handleDrawerToggle}
+        sx={{
+          width: drawerWidth,
+          flexShrink: 0,
+          "& .MuiDrawer-paper": {
+            width: drawerWidth,
+            backgroundColor: "#f8f9fa",
+            boxSizing: "border-box",
+            border: 0,
+            direction: "rtl",
+          },
+        }}
+      >
+        {drawerContent}
+      </Drawer>
+    </>
   );
 };
 

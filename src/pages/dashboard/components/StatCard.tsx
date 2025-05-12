@@ -16,7 +16,7 @@ const StatCard: React.FC<StatCardProps> = ({ icon, value, label, color }) => {
         borderRadius: 2,
         p: 2,
         mt: 1,
-        width: "32.8%",
+        width: {xs:"48.5%",md:"32.8%"},
         display: "flex",
         flexDirection: "row",
       }}
@@ -39,7 +39,7 @@ const StatCard: React.FC<StatCardProps> = ({ icon, value, label, color }) => {
         <Typography
           fontWeight="bold"
           lineHeight={1}
-          fontSize={20}
+          fontSize={{xs:14,md:20}}
           sx={{ color }}
         >
           {value}
@@ -51,6 +51,7 @@ const StatCard: React.FC<StatCardProps> = ({ icon, value, label, color }) => {
             gap: 0.5,
             color: "gray",
           }}
+          fontSize={{xs:12,md:20}}
         >
           {label}
         </Typography>

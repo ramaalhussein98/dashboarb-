@@ -1,5 +1,12 @@
 import React from "react";
-import { Box, Button, Stack, Typography } from "@mui/material";
+import {
+  Box,
+  Button,
+  Stack,
+  Typography,
+  useMediaQuery,
+  useTheme,
+} from "@mui/material";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import { PieChart, Pie, Cell, ResponsiveContainer, Tooltip } from "recharts";
 import { cityData } from "../../../constant";
@@ -7,6 +14,8 @@ import TrendingUpIcon from "@mui/icons-material/TrendingUp";
 import { CityChartProps } from "../../../types";
 
 const CityChart = ({ title }: CityChartProps) => {
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
   return (
     <Stack
       sx={{
@@ -14,11 +23,15 @@ const CityChart = ({ title }: CityChartProps) => {
         borderRadius: 2,
         p: 2,
         mt: 1,
-        width: "50%",
+        width: { xs: "100%", md: "50%" },
       }}
     >
-      <Box display={"flex"} justifyContent={"space-between"}>
-        <Typography variant="h6" fontWeight={600}>
+      <Box
+        display={"flex"}
+        alignItems={"center"}
+        justifyContent={"space-between"}
+      >
+        <Typography variant="h6" fontSize={{ xs: 16, md: 20 }} fontWeight={600}>
           {title}
         </Typography>
         <Button sx={{ color: "gray" }}>
@@ -52,7 +65,7 @@ const CityChart = ({ title }: CityChartProps) => {
         <PieChart>
           <Pie
             data={cityData}
-            cx="85%"
+            cx={isMobile ? "50%" : "85%"}
             cy="50%"
             labelLine={false}
             outerRadius={80}

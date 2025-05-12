@@ -65,7 +65,11 @@ const Dashboard = () => {
           <StatCard {...item} />
         ))}
       </Box>
-      <Stack display={"flex"} flexDirection={"row"} gap={1}>
+      <Stack
+        display={"flex"}
+        flexDirection={{ xs: "column", md: "row" }}
+        gap={1}
+      >
         <CityChart title={"أعلى 10 بلدان حسب النقاط"} />
         <CityChart title={"أعلى 10 بلدان حسب الطلبات"} />
       </Stack>
