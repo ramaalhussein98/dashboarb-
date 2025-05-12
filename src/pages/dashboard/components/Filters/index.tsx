@@ -37,14 +37,7 @@ const commonInputProps = {
     </InputAdornment>
   ),
 };
-const iconButtonStyle = {
-  backgroundColor: "#f5f5f5",
-  width: "36px",
-  height: "36px",
-  "&:hover": {
-    backgroundColor: "#eeeeee",
-  },
-};
+
 const iconData = [
   { Icon: PersonIcon, count: 4 },
   { Icon: NotificationsIcon, count: 2853 },

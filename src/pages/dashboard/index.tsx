@@ -1,5 +1,5 @@
 import React from "react";
-import Filters from "./components/filters";
+import Filters from "./components/Filters";
 import StatCard from "./components/StatCard";
 import AssignmentIcon from "@mui/icons-material/Assignment";
 import EmojiObjectsIcon from "@mui/icons-material/EmojiObjects";
@@ -7,7 +7,7 @@ import PeopleIcon from "@mui/icons-material/People";
 import ThumbUpAltIcon from "@mui/icons-material/ThumbUpAlt";
 import EmojiEmotionsIcon from "@mui/icons-material/EmojiEmotions";
 import AutorenewIcon from "@mui/icons-material/Autorenew";
-import { Box, Grid, Stack } from "@mui/material";
+import { Box, Stack } from "@mui/material";
 import CityChart from "./components/CityChart";
 
 const Dashboard = () => {
